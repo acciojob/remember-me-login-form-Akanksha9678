@@ -1,26 +1,38 @@
 //your JS code here. If required.
 let form=document.querySelector("form");
-let nameBox=document.querySelector("#username").value;
-let passBox=document.querySelector("#password").value;
-let checkBox=document.querySelector("#checkbox");
 let Submit=document.querySelector("#submit");
+let existingBtn = document.querySelector("#existing");
 
+window.addEventListener("DOMContentLoaded", () => {
+			if (localStorage.getItem("nameData") && localStorage.getItem("passData")) {
+				existingBtn.style.display = "block";
+			}
+		});
 
 
 form.addEventListener("submit",(e)=>{
 	e.preventDefault();
-	let btn=document.querySelector("#existing");
+	let checkBox=document.querySelector("#checkbox").checked;
+	let nameBox=document.querySelector("#username").value;
+    let passBox=document.querySelector("#password").value;   
+
 	if(checkBox){
-		window.localStorage.setItem("nameData",JSON.stringify(nameBox));
-		window.localStorage.setItem("passData",JSON.stringify(passBox));
-		btn.style.display="block";
-		btn.addEventListener("click",()=>{
-			window.localStorage.getItem("nameData");
-			Uname=JSON.parse("nameData");
-			alert(`Logged in as ${Uname}`);
-		})
+		window.localStorage.setItem("nameData",nameBox);
+		window.localStorage.setItem("passData",passBox);
 	}
 	else{
-		alert(`Logged in as ${nameBox}`);
+		localStorage.removeItem("nameData");
+		localStorage.removeItem("passData");
 	}
-})
+	alert(`Logged in as ${username}`);
+
+	if (checkBox) {
+				existingBtn.style.display = "block";
+			}
+});
+existingBtn.addEventListener("click", () => {
+			let savedName = localStorage.getItem("nameData");
+			if (savedName) {
+				alert(`Logged in as ${savedName}`);
+			}
+});
