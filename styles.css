@@ -1,1 +1,13 @@
 /*  your css code here. If applicable */
+#existing{
+	display:none;
+}
+#submit{
+	margin:10px;
+	width:100px;
+	height:20px;
+	background:skyblue;
+	border:none;
+	border-radius:5px;
+	
+}
