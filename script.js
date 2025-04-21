@@ -11,11 +11,13 @@ form.addEventListener("submit",(e)=>{
 	e.preventDefault();
 	let btn=document.querySelector("#existing");
 	if(checkBox){
-		localStorage.setItem("nameData",JSON.stringify(nameBox));
-		localStorage.setItem("passData",JSON.stringify(passBox));
+		window.localStorage.setItem("nameData",JSON.stringify(nameBox));
+		window.localStorage.setItem("passData",JSON.stringify(passBox));
 		btn.style.display="block";
 		btn.addEventListener("click",()=>{
-			alert(`Logged in as ${nameBox}`);
+			window.localStorage.getItem("nameData");
+			Uname=JSON.parse("nameData");
+			alert(`Logged in as ${Uname}`);
 		})
 	}
 	else{
