@@ -24,7 +24,7 @@ form.addEventListener("submit",(e)=>{
 		localStorage.removeItem("nameData");
 		localStorage.removeItem("passData");
 	}
-	alert(`Logged in as ${username}`);
+	alert(`Logged in as ${nameBox}`);
 
 	if (checkBox) {
 				existingBtn.style.display = "block";
